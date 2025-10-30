@@ -53,6 +53,10 @@ app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/expenses", expenseRoutes);
 
+app.get("/", (req, res) => {
+  res.send("Expense Tracker Backend is live and running successfully!");
+});
+
 // Error handler middleware
 app.use(errorHandler);
 
