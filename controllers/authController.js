@@ -43,7 +43,6 @@ exports.register = async (req, res, next) => {
       });
     }
 
-    // Create user
     const user = await User.create({
       name,
       email,
@@ -115,8 +114,6 @@ exports.login = async (req, res, next) => {
   }
 };
 
-// @desc    Get current logged in user
-// @route   GET /api/auth/me
 exports.getMe = async (req, res, next) => {
   try {
     const user = await User.findById(req.user.id);
@@ -134,8 +131,6 @@ exports.getMe = async (req, res, next) => {
   }
 };
 
-// @desc    Logout user (clear token cookie)
-// @route   POST /api/auth/logout
 exports.logout = async (req, res, next) => {
   try {
     res.cookie("token", "", {

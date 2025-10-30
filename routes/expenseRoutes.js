@@ -8,7 +8,6 @@ const {
 } = require("../controllers/expenseController");
 const { protect } = require("../middlewares/auth");
 
-// All routes require authentication
 router.use(protect);
 
 router.route("/").get(getAllExpenses).post(addExpense);

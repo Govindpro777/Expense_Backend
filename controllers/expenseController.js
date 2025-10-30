@@ -43,8 +43,6 @@ exports.addExpense = async (req, res, next) => {
   }
 };
 
-// @desc    Delete expense
-// @route   DELETE /api/expenses/:id
 exports.deleteExpense = async (req, res, next) => {
   try {
     const expense = await Expense.findOne({

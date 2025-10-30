@@ -11,10 +11,8 @@ dotenv.config();
 
 const app = express();
 
-// Connect to MongoDB
 connectDB();
 
-// Middleware
 const configuredOrigin = process.env.CLIENT_URL;
 const defaultOrigins = [
   "http://localhost:5173",
@@ -28,7 +26,6 @@ const allowedOrigins = configuredOrigin
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Allow requests with no origin like mobile apps or curl
       if (!origin) return callback(null, true);
       if (allowedOrigins.includes(origin)) return callback(null, true);
       return callback(new Error(`CORS blocked for origin: ${origin}`));
@@ -44,12 +41,10 @@ app.use(
   })
 );
 
-// Explicitly handle preflight
 app.options("*", cors());
 app.use(express.json({ limit: "10mb" }));
 app.use(cookieParser());
 
-// Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/expenses", expenseRoutes);
 
@@ -57,7 +52,6 @@ app.get("/", (req, res) => {
   res.send("Expense Tracker Backend is live and running successfully!");
 });
 
-// Error handler middleware
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
