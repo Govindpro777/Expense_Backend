@@ -1,33 +1,3 @@
-// const express = require("express");
-// const cors = require("cors");
-// const dotenv = require("dotenv");
-// const connectDB = require("./config/db");
-// const expenseRoutes = require("./routes/expenseRoutes");
-// const errorHandler = require("./middlewares/errorHandler");
-
-// dotenv.config();
-
-// const app = express();
-
-// // Connect to MongoDB
-// connectDB();
-
-// // Middleware
-// app.use(cors());
-// app.use(express.json());
-
-// // Routes
-// app.use("/api/expenses", expenseRoutes);
-
-// // Error handler middleware
-// app.use(errorHandler);
-
-// const PORT = process.env.PORT || 5000;
-
-// app.listen(PORT, () => {
-//   console.log(`Server running on port ${PORT}`);
-// });
-
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
@@ -46,7 +16,11 @@ connectDB();
 
 // Middleware
 const configuredOrigin = process.env.CLIENT_URL;
-const defaultOrigins = ["http://localhost:5173", "http://localhost:8081"];
+const defaultOrigins = [
+  "http://localhost:5173",
+  "http://localhost:8081",
+  "https://expense-frontend-nine-taupe.vercel.app",
+];
 const allowedOrigins = configuredOrigin
   ? configuredOrigin.split(",").map((o) => o.trim())
   : defaultOrigins;
